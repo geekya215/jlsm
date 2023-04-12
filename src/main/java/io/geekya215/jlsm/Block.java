@@ -82,6 +82,18 @@ public final class Block {
             return offsets.size() * SIZEOF_U16 + data.size() + SIZEOF_U16;
         }
 
+        public boolean add(List<Byte> key, List<Byte> value) {
+            byte[] newKey = new byte[key.size()];
+            byte[] newValue = new byte[value.size()];
+            for (int i = 0; i < key.size(); i++) {
+                newKey[i] = key.get(i);
+            }
+            for (int i = 0; i < value.size(); i++) {
+                newValue[i] = value.get(i);
+            }
+            return add(newKey, newValue);
+        }
+
         public boolean add(byte[] key, byte[] value) {
 
             int keyLen = key.length;
